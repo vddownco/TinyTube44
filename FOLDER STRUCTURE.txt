@@ -1,0 +1,13 @@
+## 📁 Project Structure
+
+TinyTube/
+│
+├── app.py # Main Flask backend
+├── templates/ # HTML frontend files
+│ ├── landing.html
+│ ├── search.html
+│ └── choose.html
+├── downloads/ # Temporary folder for downloaded files
+├── requirements.txt # Python dependencies
+├── HOW_TO_USE.txt # Simple step-by-step user guide
+└── README.md # This file
