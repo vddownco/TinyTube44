@@ -1,0 +1,9 @@
+body {
+  font-family: 'Helvetica Neue', sans-serif;
+}
+
+button:focus,
+input:focus {
+  outline: none;
+}
+

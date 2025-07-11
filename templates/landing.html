@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>TinyTube – YouTube Downloader</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-neutral-950 text-white min-h-screen flex items-center justify-center">
+  <div class="text-center space-y-8 px-6">
+    <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight animate-fade-in-up">
+      Welcome to <span class="text-red-500">Tiny</span><span class="text-blue-500">Tube</span>
+    </h1>
+
+    <p class="text-lg text-gray-300 max-w-xl mx-auto animate-fade-in-up delay-200">
+      Download YouTube videos and audio in seconds 🚀
+    </p>
+
+    <a href="/search"
+       class="inline-block px-8 py-4 rounded-xl text-lg font-bold
+              bg-gradient-to-r from-pink-500 to-red-500
+              hover:from-red-500 hover:to-pink-500 transition
+              shadow-lg shadow-pink-500/30 hover:shadow-pink-600/50
+              hover:scale-105 animate-bounce">
+      🚀 GET STARTED
+    </a>
+  </div>
+
+  <style>
+    @keyframes fade-in-up {
+      from { opacity: 0; transform: translateY(20px);}
+      to   { opacity: 1; transform: translateY(0);}
+    }
+    .animate-fade-in-up { animation: fade-in-up .6s ease-out both; }
+    .delay-200 { animation-delay: .2s; }
+  </style>
+</body>
+</html>
+

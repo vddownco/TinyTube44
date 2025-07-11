@@ -1,0 +1,107 @@
+<!-- templates/choose.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>{{ title }} – Select Quality</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-neutral-900 text-white min-h-screen flex flex-col">
+  <!-- Header -->
+  <header class="px-6 py-4 bg-black/40 backdrop-blur-md shadow-md">
+    <h1 class="text-2xl md:text-3xl font-extrabold tracking-tight">
+      Tiny<span class="text-blue-500">Tube</span>
+    </h1>
+  </header>
+
+  <main class="flex-1 px-4 py-8 max-w-6xl mx-auto grid gap-8 md:grid-cols-2">
+    <!-- Thumbnail -->
+    <div>
+      <img src="https://img.youtube.com/vi/{{ thumb_id }}/hqdefault.jpg"
+           alt="Thumbnail"
+           class="w-full rounded-xl shadow-lg" />
+      <h2 class="mt-4 text-xl font-semibold">{{ title }}</h2>
+    </div>
+
+    <!-- Format Selection -->
+    <form id="downloadForm" action="/download" method="POST" class="space-y-10">
+      <input type="hidden" name="url" value="{{ url }}" />
+
+      <!-- VIDEO OPTIONS -->
+      <section>
+        <h3 class="text-lg font-bold mb-3">🎞️ Video (with audio)</h3>
+        <div class="grid gap-3">
+          {% for v in videos %}
+          <label class="option-card flex items-center justify-between p-4 bg-zinc-800 rounded-lg cursor-pointer hover:scale-[1.02] transition-all">
+            <div class="flex items-center gap-3">
+              <input type="radio" name="format_id" value="{{ v.fmt }}" required />
+              <span class="font-medium" title="{{ v.res_full }}">{{ v.res_label }}</span>
+            </div>
+            <span class="text-sm text-gray-300">{{ v.size }} • {{ v.ext }}</span>
+          </label>
+          {% endfor %}
+        </div>
+      </section>
+
+      <!-- AUDIO OPTIONS -->
+      <section>
+        <h3 class="text-lg font-bold mb-3">🎧 Audio-only</h3>
+        <div class="grid gap-3">
+          {% for a in audios %}
+          <label class="option-card flex items-center justify-between p-4 bg-zinc-800 rounded-lg cursor-pointer hover:scale-[1.02] transition-all">
+            <div class="flex items-center gap-3">
+              <input type="radio" name="format_id" value="{{ a.fmt }}" required />
+              <span class="font-medium">{{ a.abr }}</span>
+            </div>
+            <span class="text-sm text-gray-300">{{ a.size }} • {{ a.ext }}</span>
+          </label>
+          {% endfor %}
+        </div>
+      </section>
+
+      <!-- BLUE GLOW BUTTON -->
+      <button id="dlBtn" type="submit"
+        class="relative w-full py-3 rounded-lg font-bold text-lg tracking-wide
+               bg-blue-600 hover:bg-blue-700 transition
+               shadow-lg shadow-blue-500/40 hover:shadow-blue-600/60
+               before:absolute before:inset-0 before:rounded-lg
+               before:-z-10 before:opacity-0 before:blur-lg
+               before:bg-blue-500/60 hover:before:opacity-100
+               hover:before:scale-110 before:transition">
+        ⬇ DOWNLOAD NOW 🥰
+      </button>
+    </form>
+  </main>
+
+  <!-- Spinner Overlay -->
+  <div id="spinner" class="fixed inset-0 hidden bg-black/70 backdrop-blur flex flex-col items-center justify-center gap-4 z-50">
+    <svg class="animate-spin w-16 h-16 text-blue-500" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+      <circle cx="12" cy="12" r="10" class="opacity-20" />
+      <path d="M22 12A10 10 0 0 1 12 22" stroke-width="2" />
+    </svg>
+    <p class="text-xl font-semibold">Downloading…</p>
+  </div>
+
+  <script>
+    // Highlight selected format
+    document.querySelectorAll('input[name="format_id"]').forEach(radio => {
+      radio.addEventListener('change', e => {
+        document.querySelectorAll('.option-card').forEach(card =>
+          card.classList.remove('ring-2', 'ring-blue-500'));
+        e.target.closest('.option-card').classList.add('ring-2', 'ring-blue-500');
+      });
+    });
+
+    // Spinner + pulse animation
+    const spinner = document.getElementById('spinner');
+    const dlBtn = document.getElementById('dlBtn');
+    document.getElementById('downloadForm').addEventListener('submit', () => {
+      spinner.classList.remove('hidden');
+      dlBtn.classList.add('animate-pulse');
+    });
+
+    window.addEventListener('focus', () => spinner.classList.add('hidden'));
+  </script>
+</body>
+</html>
+
