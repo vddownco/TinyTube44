@@ -1,0 +1,41 @@
+🔹 Steps to Run TinyTube 🔹
+
+1.Download Python
+Download Python 3.11.9 (latest version) on your system. 
+https://www.python.org/downloads/release/python-3120/
+
+
+2.Download TinyTube Code
+Download the TinyTube offline ZIP from @sanketpadhyal GitHub.
+(Note: As of now, the code might not work directly in the online Python compiler.)
+
+
+3.Unzip the Folder
+Unzip the ZIP file. You'll see a folder named tinytube in your system.
+Copy the path of that folder.
+
+
+4.Run the Project (2 Ways)
+✅ If Python is perfectly installed in your system, you can:
+Directly run the program by opening app.py in any Python compiler,
+OR
+Open Terminal/Command Prompt as administrator, and follow these commands:
+
+🔁 Terminal Method
+hit these commands respectively.
+
+cd <your-folder-path>
+
+pip install -r requirements.txt  (If this gives error, try this command instantly after opening compiler)
+
+python app.py
+
+
+After that, you’ll be redirected to a development server.
+
+Copy the link it gives you (e.g., http://127.0.0.1:5000) and paste it in your browser to use TinyTube 🎉  
+
+
+
+~credit / madeby : VortexByte github = @sanketpadhyal
+
