@@ -5,7 +5,7 @@ from yt_dlp import YoutubeDL
 app = Flask(__name__)
 
 BASE_DIR   = os.path.abspath(os.path.dirname(__file__))
-DOWNLOADS  = os.path.join(BASE_DIR, "downloads")
+DOWNLOADS  = os.path.join(BASE_DIR, "tmp")
 os.makedirs(DOWNLOADS, exist_ok=True)
 
 # ───────────────────────── helpers ──────────────────────────
